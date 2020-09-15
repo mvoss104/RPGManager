@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\RPG\Publish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>06/26/2018 02:03:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>06/26/2018 02:03:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>01/13/2014 16:11:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>01/13/2014 16:11:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>01/13/2014 16:11:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/25/2012 11:48:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/24/2018 17:44:14</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/13/2012 12:19:34</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>05/24/2018 13:38:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Pipes.AccessControl.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Pipes.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.AccessControl.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Claims.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>05/24/2018 13:38:24</publishTime>
+    </File>
+    <File Include="bin/RPGManager.Database.dll">
+      <publishTime>08/25/2020 19:44:37</publishTime>
+    </File>
+    <File Include="bin/RPGManager.Database.pdb">
+      <publishTime>08/25/2020 19:44:37</publishTime>
+    </File>
+    <File Include="bin/RPGManager.dll">
+      <publishTime>08/25/2020 19:44:40</publishTime>
+    </File>
+    <File Include="bin/RPGManager.pdb">
+      <publishTime>08/25/2020 19:44:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/01/2018 11:20:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/01/2018 11:16:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>02/01/2018 11:16:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>02/01/2018 11:20:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>02/01/2018 11:20:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>02/01/2018 11:20:56</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>07/17/2013 17:03:52</publishTime>
+    </File>
+    <File Include="Content/Character.js">
+      <publishTime>08/25/2020 19:38:54</publishTime>
+    </File>
+    <File Include="Content/Character.js.map">
+      <publishTime>08/25/2020 19:38:54</publishTime>
+    </File>
+    <File Include="Content/CharacterAdder.js">
+      <publishTime>08/25/2020 19:38:54</publishTime>
+    </File>
+    <File Include="Content/CharacterAdder.js.map">
+      <publishTime>08/25/2020 19:38:54</publishTime>
+    </File>
+    <File Include="Content/CharacterRow.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/CharacterRow.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/CombatRow.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/CombatRow.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Communication.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Communication.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Effect.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Effect.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/EffectDisplay.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/EffectDisplay.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/EffectListDisplay.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/EffectListDisplay.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Images/Aoife_Portrait.png">
+      <publishTime>09/02/2018 16:04:54</publishTime>
+    </File>
+    <File Include="Content/Images/Fela_Portrait.png">
+      <publishTime>09/02/2018 16:57:56</publishTime>
+    </File>
+    <File Include="Content/Images/Milo_Portrait.png">
+      <publishTime>09/02/2018 16:57:47</publishTime>
+    </File>
+    <File Include="Content/Images/Norbert_Portrait.png">
+      <publishTime>09/02/2018 16:58:10</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Beast/crocodile.png">
+      <publishTime>08/25/2020 19:13:10</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Beast/direwolf.png">
+      <publishTime>07/04/2020 17:28:42</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Beast/eel.png">
+      <publishTime>08/25/2020 19:43:50</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Beast/polarbear.png">
+      <publishTime>08/03/2020 17:47:20</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Demon/imp.png">
+      <publishTime>08/09/2020 12:56:55</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Demon/succubus.png">
+      <publishTime>08/09/2020 12:53:39</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Devil/Rakshasa.png">
+      <publishTime>09/23/2018 11:59:08</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Fey/pixie.png">
+      <publishTime>08/02/2020 20:48:43</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Giant/Ogre.png">
+      <publishTime>07/04/2020 15:34:45</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Magic/Mages_Hand.png">
+      <publishTime>09/23/2018 12:06:16</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Monstrosity/Griffon.png">
+      <publishTime>07/12/2020 08:03:44</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/!blank.png">
+      <publishTime>09/09/2018 19:43:46</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Bandit.png">
+      <publishTime>07/13/2020 20:59:15</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Guard.png">
+      <publishTime>07/13/2020 21:06:09</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Hobgoblin.png">
+      <publishTime>08/09/2020 13:08:24</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Kuo_Toa.png">
+      <publishTime>08/25/2020 19:42:21</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Marcus_Duff.png">
+      <publishTime>09/09/2018 19:57:00</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Sara_Portrait.png">
+      <publishTime>09/09/2018 21:53:52</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/NPC/Senga_McIntyre.png">
+      <publishTime>09/09/2018 19:39:54</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Aoife_Portrait.png">
+      <publishTime>09/02/2018 16:04:54</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Caiside.png">
+      <publishTime>07/04/2020 20:10:29</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Emilia.png">
+      <publishTime>11/12/2019 19:03:42</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Fela_Portrait.png">
+      <publishTime>09/02/2018 16:57:56</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Godo.png">
+      <publishTime>11/12/2019 19:06:16</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/gwynn.png">
+      <publishTime>07/04/2020 20:08:05</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Lavenzia.png">
+      <publishTime>07/04/2020 17:36:27</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Lua.png">
+      <publishTime>11/19/2019 20:32:02</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Milo_Portrait.png">
+      <publishTime>09/02/2018 16:57:47</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Norbert_Portrait.png">
+      <publishTime>09/02/2018 16:58:10</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Qhirou.png">
+      <publishTime>11/12/2019 19:06:29</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Ruki_Portrait.png">
+      <publishTime>09/02/2018 16:58:17</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Saskia.png">
+      <publishTime>11/12/2019 19:04:10</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Stahir_Portrait.png">
+      <publishTime>09/02/2018 16:58:36</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/PC/Zarton.png">
+      <publishTime>11/19/2019 20:58:44</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/banshee.png">
+      <publishTime>09/09/2018 22:15:37</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/bone_naga.png">
+      <publishTime>09/09/2018 22:18:12</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Crawling_Claw.png">
+      <publishTime>09/09/2018 22:00:01</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/death_knight.png">
+      <publishTime>09/09/2018 22:35:41</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/demilich.png">
+      <publishTime>09/09/2018 22:36:25</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/flameskull.png">
+      <publishTime>09/09/2018 22:23:04</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Ghost.png">
+      <publishTime>09/09/2018 22:24:43</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Ghoul.png">
+      <publishTime>09/09/2018 22:04:17</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/lich.png">
+      <publishTime>09/09/2018 22:37:18</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/mummy.png">
+      <publishTime>09/09/2018 22:19:24</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/nightwalker.png">
+      <publishTime>06/05/2019 16:32:09</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/revenant.png">
+      <publishTime>09/09/2018 22:27:04</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Shadow.png">
+      <publishTime>09/09/2018 22:06:37</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Skeleton.png">
+      <publishTime>09/09/2018 22:00:36</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Specter.png">
+      <publishTime>09/09/2018 22:06:17</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/vampire.png">
+      <publishTime>09/09/2018 22:30:34</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/vampire_spawn.png">
+      <publishTime>09/09/2018 22:29:47</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/wight.png">
+      <publishTime>09/09/2018 22:13:57</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/will_o_wisp.png">
+      <publishTime>09/09/2018 22:20:37</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/wraith.png">
+      <publishTime>09/09/2018 22:33:58</publishTime>
+    </File>
+    <File Include="Content/Images/Portraits/Undead/Zombie.png">
+      <publishTime>09/09/2018 22:01:56</publishTime>
+    </File>
+    <File Include="Content/Images/Ruki_Portrait.png">
+      <publishTime>09/02/2018 16:58:17</publishTime>
+    </File>
+    <File Include="Content/Images/Stahir_Portrait.png">
+      <publishTime>09/02/2018 16:58:36</publishTime>
+    </File>
+    <File Include="Content/PortraitLifebar.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/PortraitLifebar.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/SignalR.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/SignalR.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/Styles/bulma.css">
+      <publishTime>09/09/2018 16:46:26</publishTime>
+    </File>
+    <File Include="Content/Styles/Site.css">
+      <publishTime>11/17/2019 09:29:45</publishTime>
+    </File>
+    <File Include="Content/SummaryView.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/SummaryView.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/WrapperView.js">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Content/WrapperView.js.map">
+      <publishTime>08/25/2020 19:38:55</publishTime>
+    </File>
+    <File Include="Docs/Rules.pdf">
+      <publishTime>01/21/2020 17:50:02</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>09/02/2018 13:56:32</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.6.4.js">
+      <publishTime>09/04/2018 20:55:23</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.6.4.min.js">
+      <publishTime>09/04/2018 20:55:22</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.3.0.js">
+      <publishTime>09/04/2018 20:55:31</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.3.0.min.js">
+      <publishTime>09/04/2018 20:55:31</publishTime>
+    </File>
+    <File Include="tsconfig.json">
+      <publishTime>09/09/2018 15:55:20</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>06/03/2019 21:12:02</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>09/02/2018 14:54:05</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/03/2019 21:07:00</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
