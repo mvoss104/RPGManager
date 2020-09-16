@@ -67,10 +67,6 @@ class Character {
 
     Charisma: number;
 
-    LocationX: number;
-
-    LocationY: number;
-
     /**
      * Create a new blank character 
      */
@@ -132,7 +128,5 @@ class Character {
         this.Intelligence = fromServer.Intelligence;
         this.Wisdom = fromServer.Wisdom;
         this.Charisma = fromServer.Charisma;
-        this.LocationX = fromServer.LocationX;
-        this.LocationY = fromServer.LocationY;
     }
 }

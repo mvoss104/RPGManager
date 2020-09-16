@@ -8,10 +8,20 @@ class CombatRow {
     /**
      * This is the count on which the actor acts.
      */
-    InitiativeCount: number;
+    public InitiativeCount: number;
+
+    /**
+     * The location of the character on the map on the X axis.
+     */
+    public LocationX: number;
+
+    /**
+     * The location of the character on the map on the Y axis.
+     */
+    public LocationY: number;
 
     /**
      * This is who or what acts on that initiative count.
      */
-    Actor: Character;
+    public Actor: Character;
 }

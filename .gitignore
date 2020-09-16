@@ -1,0 +1,11 @@
+/RPGManager/RPGManager/Content/*.js
+/RPGManager/RPGManager/Content/*.map
+/RPGManager/packages
+/RPGManager/node_modules
+/RPGManager/RPGManager/bin
+/RPGManager/RPGManager.Database/bin
+/RPGManagerService/RPGManagerService/bin
+/RPGManagerService/RPGManagerService/obj
+/RPGManagerService/packages
+/RPGManager/RPGManager/obj
+/RPGManager/RPGManager.Database/obj

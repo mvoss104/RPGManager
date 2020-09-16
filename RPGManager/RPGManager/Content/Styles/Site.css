@@ -31,6 +31,14 @@
     overflow: hidden;
 }
 
+.battlemap-cell.highlight {
+    background-color: #FFFFAA;
+}
+
+.battlemap-cell.wall {
+    background-color: #000000;
+}
+
 .character-row {
     display: flex;
 }
@@ -139,6 +147,7 @@
     margin-left: 25px;
     position: fixed;
     top: 0;
+    right: 0;
     display: inline-block;
     max-width: 525px;
 }

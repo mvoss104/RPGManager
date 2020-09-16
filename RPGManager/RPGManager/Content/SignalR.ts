@@ -33,6 +33,21 @@ interface PlayersClient {
      * Indicate that it's someone new's turn.
      */
     updateInitiative: Function;
+
+    /**
+     * Change a character's initiative count or location
+     */
+    updateCombatRow: Function;
+
+    /**
+     * Add a wall to the map. 
+     */
+    addWall: Function;
+
+    /**
+     * Remove a wall from the map.
+     */
+    removeWall: Function;
 }
 
 interface PlayersServer {
@@ -50,6 +65,11 @@ interface PlayersServer {
      * Function fetches characters who are already loaded.
      */
     getCharacters: Function;
+
+    /**
+     * Function fetches walls on the map. 
+     */
+    getWalls: Function;
 
     /**
      * Push notification to all clients that a character is healed.
@@ -85,6 +105,21 @@ interface PlayersServer {
      * Push notification to all clients that a character should be removed.
      */
     removeCharacter: Function;
+
+    /**
+     * Push notification about a change to initiative or a change to character position on the map
+     */
+    updateCombatRow: Function;
+
+    /**
+     * Push notification about a wall added to the map
+     */
+    addWall: Function;
+
+    /**
+     * Push notification about a wall removed from the map
+     */
+    removeWall: Function;
 }
 
 $.connection.playersHub.client.addCharacter = function (character: Character, initiative: number) {
@@ -99,6 +134,18 @@ $.connection.playersHub.client.updateCharacter = function (characterFromServer: 
     updateCharacter(characterFromServer);
 }
 
+$.connection.playersHub.client.updateCombatRow = function (charId: number, init: number, x: number, y: number) {
+    updateCombatRow(charId, init, x, y);
+}
+
 $.connection.playersHub.client.updateInitiative = function (actorId: number) {
     updateInitiative(actorId);
+}
+
+$.connection.playersHub.client.addWall = function (x: number, y: number) {
+    addWall(x, y);
+}
+
+$.connection.playersHub.client.removeWall = function (x: number, y: number) {
+    removeWall(x, y);
 }

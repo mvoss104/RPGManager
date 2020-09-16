@@ -181,16 +181,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 13:38:24</publishTime>
     </File>
     <File Include="bin/RPGManager.Database.dll">
-      <publishTime>08/25/2020 19:44:37</publishTime>
+      <publishTime>09/15/2020 23:03:42</publishTime>
     </File>
     <File Include="bin/RPGManager.Database.pdb">
-      <publishTime>08/25/2020 19:44:37</publishTime>
+      <publishTime>09/15/2020 23:03:42</publishTime>
     </File>
     <File Include="bin/RPGManager.dll">
-      <publishTime>08/25/2020 19:44:40</publishTime>
+      <publishTime>09/15/2020 23:06:40</publishTime>
     </File>
     <File Include="bin/RPGManager.pdb">
-      <publishTime>08/25/2020 19:44:40</publishTime>
+      <publishTime>09/15/2020 23:06:40</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>02/01/2018 11:20:56</publishTime>
@@ -216,53 +216,65 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/WebGrease.dll">
       <publishTime>07/17/2013 17:03:52</publishTime>
     </File>
+    <File Include="Content/Battlemap.js">
+      <publishTime>09/15/2020 23:06:39</publishTime>
+    </File>
+    <File Include="Content/Battlemap.js.map">
+      <publishTime>09/15/2020 23:06:39</publishTime>
+    </File>
+    <File Include="Content/BattlemapCell.js">
+      <publishTime>09/15/2020 23:06:39</publishTime>
+    </File>
+    <File Include="Content/BattlemapCell.js.map">
+      <publishTime>09/15/2020 23:06:39</publishTime>
+    </File>
     <File Include="Content/Character.js">
-      <publishTime>08/25/2020 19:38:54</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Character.js.map">
-      <publishTime>08/25/2020 19:38:54</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CharacterAdder.js">
-      <publishTime>08/25/2020 19:38:54</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CharacterAdder.js.map">
-      <publishTime>08/25/2020 19:38:54</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CharacterRow.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CharacterRow.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CombatRow.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/CombatRow.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Communication.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Communication.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Effect.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Effect.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/EffectDisplay.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/EffectDisplay.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/EffectListDisplay.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/EffectListDisplay.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Images/Aoife_Portrait.png">
       <publishTime>09/02/2018 16:04:54</publishTime>
@@ -448,34 +460,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2018 16:58:36</publishTime>
     </File>
     <File Include="Content/PortraitLifebar.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/PortraitLifebar.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/SignalR.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/SignalR.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/Styles/bulma.css">
       <publishTime>09/09/2018 16:46:26</publishTime>
     </File>
     <File Include="Content/Styles/Site.css">
-      <publishTime>11/17/2019 09:29:45</publishTime>
+      <publishTime>09/15/2020 22:47:49</publishTime>
     </File>
     <File Include="Content/SummaryView.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/SummaryView.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/WrapperView.js">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Content/WrapperView.js.map">
-      <publishTime>08/25/2020 19:38:55</publishTime>
+      <publishTime>09/15/2020 23:06:39</publishTime>
     </File>
     <File Include="Docs/Rules.pdf">
       <publishTime>01/21/2020 17:50:02</publishTime>

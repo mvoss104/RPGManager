@@ -128,6 +128,8 @@ class CharacterRow extends React.Component {
             <div key="summary-row" className={className} style={{ height: this.state.portraitSize, width: this.state.portraitSize + this.state.bodySize }} onClick={this.expandCollapse} ref="RowElement">
                 <div className="character-portrait-wrapper" style={{ height: this.state.portraitSize, width: this.state.portraitSize }}>
                     <PortraitLifebar
+                        draggable={this.props.isDM}
+                        characterId={this.props.character.Id}
                         size={this.state.portraitSize}
                         currentHitPoints={this.props.character.CurrentHitPoints}
                         maxHitPoints={this.props.character.MaxHitPoints + this.props.character.EnhancedHitPoints}

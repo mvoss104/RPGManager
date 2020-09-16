@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\Battlemap.tsx" />
+    <TypeScriptCompile Include="Content\BattlemapCell.tsx" />
     <TypeScriptCompile Include="Content\CharacterAdder.tsx" />
     <TypeScriptCompile Include="Content\Communication.ts" />
     <TypeScriptCompile Include="Content\EffectListDisplay.tsx" />

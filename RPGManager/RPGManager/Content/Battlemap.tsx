@@ -1,21 +1,22 @@
 ﻿class Battlemap extends React.Component {
-    private static cellSize = 30;
+    public static cellSize = 30;
 
     props: {
         isDM: boolean,
-        combatRows: CombatRow[]
+        combatRows: CombatRow[],
+        walls: boolean[][]
     }
 
     constructor(props: any) {
         super(props);
 
-        this.getCharacterInPosition = this.getCharacterInPosition.bind(this);
+        this.getCombatRowInPosition = this.getCombatRowInPosition.bind(this);
     }
 
-    public getCharacterInPosition(x: number, y: number): Character {
+    public getCombatRowInPosition(x: number, y: number): CombatRow {
         for (let row of this.props.combatRows) {
-            if (row.Actor.LocationX == x && row.Actor.LocationY == y) {
-                return row.Actor;
+            if (row.LocationX == x && row.LocationY == y) {
+                return row;
             }
         }
         return null;
@@ -23,22 +24,11 @@
 
     render() {
         let rows = [];
-        for (var y = 0; y < 10; y++) {
+        for (var y = 1; y <= 30; y++) {
             let cells = [];
-            for (var x = 0; x < 10; x++) {
-                let character = this.getCharacterInPosition(x, y);
-                let characterPortrait = null;
-                if (character) {
-                    characterPortrait = <PortraitLifebar
-                        size={Battlemap.cellSize}
-                        currentHitPoints={character.CurrentHitPoints}
-                        maxHitPoints={character.MaxHitPoints + character.EnhancedHitPoints}
-                        extraHitPoints={character.TemporaryHitPoints + character.ClassPowerHitPoints}
-                        portrait={character.Portrait}
-                        showDetails={this.props.isDM}
-                    />
-                }
-                cells.push(<td key={x} className="battlemap-cell"><div className="battlemap-cell-contents">{characterPortrait}</div></td>)
+            for (var x = 1; x <= 30; x++) {
+                let row = this.getCombatRowInPosition(x, y);
+                cells.push(<BattlemapCell combatRow={row} x={x} y={y} isDM={this.props.isDM} isWall={this.props.walls[x] && this.props.walls[x][y]} />);
             }
             rows.push(<tr key={y} style={{ height: Battlemap.cellSize }}>{cells}</tr>);
         }

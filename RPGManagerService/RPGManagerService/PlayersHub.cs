@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using RPGManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace RPGManager
     {
         public static CombatRow s_CurrentRow;
         public static List<CombatRow> s_Rows = new List<CombatRow>();
+        public static List<Tuple<uint, uint>> s_Walls = new List<Tuple<uint, uint>>();
 
         public void AddCharacter(Character toAdd, int initiative)
         {
@@ -50,6 +52,35 @@ namespace RPGManager
         public CombatRow[] GetCharacters()
         {
             return s_Rows.ToArray();
+        }
+
+        public Tuple<uint, uint>[] GetWalls()
+        {
+            return s_Walls.ToArray();
+        }
+
+        public void AddWall(uint x, uint y)
+        {
+            s_Walls.Add(new Tuple<uint, uint>(x, y));
+            Clients.All.addWall(x, y);
+        }
+
+        public void RemoveWall(uint x, uint y)
+        {
+            Tuple<uint, uint> foundWall = null;
+            foreach (Tuple<uint, uint> wall in s_Walls)
+            {
+                if(wall.Item1 == x && wall.Item2 == y)
+                {
+                    foundWall = wall;
+                    break;
+                }
+            }
+            if(foundWall != null)
+            {
+                s_Walls.Remove(foundWall);
+            }
+            Clients.All.removeWall(x, y);
         }
 
         public void AddTempHp(int id, int hitPoints)
@@ -152,6 +183,25 @@ namespace RPGManager
                 s_Rows.Remove(toRemove);
                 Clients.All.removeCharacter(id);
             }
+        }
+
+        public void UpdateCombatRow(int charId, int? init, int x, int y)
+        {
+            foreach (CombatRow row in s_Rows)
+            {
+                if (row.Actor.Id == charId)
+                {
+                    row.LocationX = x;
+                    row.LocationY = y;
+                    if (init != null && row.InitiativeCount != init)
+                    {
+                        row.InitiativeCount = (int)init;
+                        s_Rows.Sort();
+                    }
+                    break;
+                }
+            }
+            Clients.All.updateCombatRow(charId, init, x, y);
         }
     }
 }
