@@ -99,13 +99,6 @@ class CharacterRow extends React.Component {
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-        if (this.props.active) {
-            (this.refs.RowElement as Element).scrollIntoView({
-                behavior: "smooth",
-                block: "center",
-                inline: "center"
-            });
-        }
         if (prevProps.active != this.props.active) {
             this.updateDimensions();
         }
