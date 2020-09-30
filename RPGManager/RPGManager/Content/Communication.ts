@@ -23,8 +23,13 @@ class Communication {
 
     public static GetWalls() {
         $.connection.playersHub.server.getWalls().done(function (walls: any[]) {
-            for (let wall of walls) {
-                addWall(wall.Item1, wall.Item2);
+            for (var c = 0; c < walls.length; c++) {
+                if (c === walls.length - 1) {
+                    addWall(walls[c].Item1, walls[c].Item2);
+                }
+                else {
+                    addWallSkinny(walls[c].Item1, walls[c].Item2);
+                }
             }
         });
     }
