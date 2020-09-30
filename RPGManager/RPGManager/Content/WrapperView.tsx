@@ -11,6 +11,7 @@ declare var updateCharacter: Function;
 declare var updateCombatRow: Function;
 declare var updateInitiative: Function;
 declare var addWall: Function;
+declare var addWallSkinny: Function;
 declare var removeWall: Function;
 
 class WrapperView extends React.Component {
@@ -43,6 +44,7 @@ class WrapperView extends React.Component {
         updateInitiative = this.updateInitiative.bind(this);
         updateCombatRow = this.updateCombatRow.bind(this);
         addWall = this.addWall.bind(this);
+        addWallSkinny = this.addWallSkinny.bind(this);
         removeWall = this.removeWall.bind(this);
 
         Communication.StartSyncWithServer();
@@ -135,11 +137,15 @@ class WrapperView extends React.Component {
      * @param y the y coordinate of the wall
      */
     public addWall(x: number, y: number) {
+        addWallSkinny(x, y);
+        this.setState({ walls: this.state.walls });
+    }
+
+    public addWallSkinny(x: number, y: number) {
         if (!this.state.walls[x]) {
             this.state.walls[x] = [];
         }
         this.state.walls[x][y] = true;
-        this.setState({ walls: this.state.walls });
     }
 
     /**
@@ -179,9 +185,31 @@ class WrapperView extends React.Component {
         return a.Actor.Name.localeCompare(b.Actor.Name);
     }
 
+    public static onDrop(event: React.DragEvent<HTMLDivElement>) {
+        event.preventDefault();
+
+        if (event.dataTransfer.files) {
+            for (var c = 0; c < event.dataTransfer.files.length; c++) {
+                (event.dataTransfer.files[c] as any).text().then(WrapperView.handleCharacter);
+            }
+
+            event.stopPropagation();
+        }
+    }
+
+    public static handleCharacter(characterString: string) {
+        let addingCharacter = new Character(JSON.parse(characterString));
+        let initiative = Math.floor((Math.random() * 20) + 1) + addingCharacter.Dexterity;
+        Communication.AddCharacter(addingCharacter, initiative);
+    }
+
+    public static onDragOver(event: React.DragEvent<HTMLDivElement>) {
+        event.preventDefault();
+    }
+
     render() {
         return (
-            <div>
+            <div onDrop={WrapperView.onDrop} onDragOver={WrapperView.onDragOver}>
                 <SummaryView isDM={this.state.isDM} rows={this.state.rows} activeRow={this.state.activeRow} />
                 <Battlemap isDM={this.state.isDM} combatRows={this.state.rows} walls={this.state.walls} />
                 {this.state.isDM ? <CharacterAdder /> : null}
