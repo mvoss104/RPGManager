@@ -1,4 +1,36 @@
 ﻿body {
+    background-color: #1E1E1E;
+    color: #FFFFFF;
+}
+
+input, button {
+    background-color: #444444;
+    color: #FFFFFF;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+button {
+    background-color: #444444;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px #777777 solid;
+}
+
+.popup-button-container {
+    float: right;
+}
+
+.dice-result-container {
+    position: fixed;
+    background-color: #444444;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px #777777 solid;
+    left: 20%;
+    width: 60%;
 }
 
 @keyframes startInit {
@@ -36,7 +68,7 @@
 }
 
 .battlemap-cell.wall {
-    background-color: #000000;
+    background-color: #444444;
 }
 
 .character-row {
@@ -140,6 +172,8 @@
 
 .bottom {
     position: fixed;
+    width: 100%;
+    left: 0;
     bottom: 0;
 }
 
@@ -150,4 +184,13 @@
     right: 0;
     display: inline-block;
     max-width: 525px;
+}
+
+.dice-field-container{
+    border-top: 1px solid white;
+    background-color: #111111;
+}
+
+.dice-field {
+    width: 100%
 }
