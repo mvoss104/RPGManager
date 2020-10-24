@@ -55,7 +55,7 @@ class PortraitLifebar extends React.Component {
                             <image width="120" height="120" href={(location.pathname + "/" + this.props.portrait).replace("//","/")} />
                         </pattern>
                     </defs>
-                    <circle cx="60" cy="60" r={radius} fill={"url(#portrait"+this.state.def_id+")"} stroke="#e0e0e0" strokeWidth="12" />
+                    <circle cx="60" cy="60" r={radius - 1} fill={"url(#portrait"+this.state.def_id+")"} stroke="#e0e0e0" strokeWidth="12" />
                     <circle cx="180" cy="60" r={radius} fill="none" stroke="#992222" strokeWidth="12" strokeDasharray={circumfrence} strokeDashoffset={circumfrence * lost} strokeLinecap="butt" transform="rotate(-90 180 60) scale(1,-1)" />
                     <circle cx="180" cy="60" r={radius} fill="none" stroke="#BB9922" strokeWidth="12" strokeDasharray={circumfrence} strokeDashoffset={circumfrence * temp} strokeLinecap="butt" transform="rotate(-90 180 60) scale(1,-1)" />
                     {
