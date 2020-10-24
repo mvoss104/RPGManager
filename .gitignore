@@ -20,3 +20,4 @@
 /RPGManagerService/.vs/RPGManagerService/v15/Server/sqlite3/storage.ide-wal
 /RPGManager/.vs/RPGManager/v15/Server/sqlite3/db.lock
 /RPGManagerService/.vs/RPGManagerService/v15/Server/sqlite3/db.lock
+*.user
