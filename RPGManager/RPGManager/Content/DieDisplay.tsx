@@ -4,6 +4,20 @@
         size: number
     }
 
+    state: {
+        gradientId: string;
+    }
+
+    private static gradientCount = 0;
+
+    constructor(props: any) {
+        super(props);
+
+        this.state = {
+            gradientId: "gradient" + DieDisplay.gradientCount++
+        }
+    }
+
     render() {
         let fillString: string;
         let gradient = null;
@@ -11,13 +25,13 @@
             fillString = this.props.die.Colors[0];
         }
         else {
-            fillString = "url(#gradient)";
+            fillString = "url(#" + this.state.gradientId + ")";
             let percent = 100 / (this.props.die.Colors.length - 1);
             let stops = [];
             for (let c = 0; c < this.props.die.Colors.length; c++) {
                 stops.push(<stop key={c} style={{ stopColor: this.props.die.Colors[c] }} offset={(percent * c) + "%"} />);
             }
-            gradient = <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+            gradient = <linearGradient id={this.state.gradientId} x1="0" x2="0" y1="0" y2="1">
                 {stops}
             </linearGradient>
         }
