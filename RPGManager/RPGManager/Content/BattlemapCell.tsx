@@ -62,7 +62,8 @@
                     onDragOver={this.dragEnter}
                     onDragExit={this.dragExit}
                     onDragLeave={this.dragExit}
-                    onClick={this.click}>
+                    onClick={this.click}
+                    title={this.props.combatRow ? this.props.combatRow.Actor.Name : ''}>
                     {this.props.combatRow ?
                         <PortraitLifebar
                             draggable={this.props.isDM}
