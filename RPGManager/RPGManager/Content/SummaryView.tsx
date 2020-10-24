@@ -18,12 +18,6 @@ class SummaryView extends React.Component {
         }
         if (this.props.isDM) {
             ret.push(<div key="bottom-spacer" className="bottom-spacer"></div>);
-            ret.push(
-                <div key="bottom" className="bottom">
-                    <button className="button" onClick={Communication.NextInitiative}>Next Turn</button>
-                    <button className="button" onClick={Communication.PrevInitiative}>Previous Turn</button>
-                </div>
-            );
         }
 
         return <div className="summary-wrapper">{ret}</div>;

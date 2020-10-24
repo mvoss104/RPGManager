@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using RPGManager.Database.Models;
 using RPGManager.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,116 @@ namespace RPGManager
         public static CombatRow s_CurrentRow;
         public static List<CombatRow> s_Rows = new List<CombatRow>();
         public static List<Tuple<uint, uint>> s_Walls = new List<Tuple<uint, uint>>();
+
+        public static Random randSeed = new Random();
+
+        public void RollDice(int characterId, string diceRequest)
+        {
+            string[] diceColors = null;
+            string diceForeground = null;
+            foreach (CombatRow row in s_Rows)
+            {
+                if (characterId == row.Actor.Id)
+                {
+                    diceColors = row.Actor.DiceColors;
+                    diceForeground = row.Actor.DiceForeground;
+                    break;
+                }
+            }
+            if (diceColors == null)
+            {
+                diceColors = new string[] { "#FFFFFF" };
+                diceForeground = "#000000";
+            }
+            string[] diceSets = diceRequest.Split(',');
+            foreach(string diceSet in diceSets)
+            {
+                RollSingleDiceSet(characterId, diceSet, diceColors, diceForeground);
+            }
+        }
+
+        private void RollSingleDiceSet(int characterId, string diceRequest, string[] diceColors, string diceForeground)
+        {
+            int result = 0;
+            List<Die> dieResult = new List<Die>();
+
+            char lastSign = '+';
+            while (diceRequest.Length > 0)
+            {
+                int math = diceRequest.IndexOfAny(new char[] { '+', '-' });
+                string piece;
+                char sign = lastSign;
+                if (math >= 0)
+                {
+                    piece = diceRequest.Substring(0, math);
+                    lastSign = diceRequest[math];
+                    diceRequest = diceRequest.Substring(math + 1);
+                }
+                else
+                {
+                    piece = diceRequest;
+                    diceRequest = string.Empty;
+                    lastSign = '+';
+                }
+                if (piece.Length == 0)
+                {
+                    continue;
+                }
+                string[] splitPiece = piece.Split('d');
+                if (splitPiece.Length == 1)
+                {
+                    if (int.TryParse(splitPiece[0], out int calcPiece))
+                    {
+                        if (sign == '+')
+                        {
+                            result += calcPiece;
+                        }
+                        else
+                        {
+                            result -= calcPiece;
+                        }
+                    }
+                }
+                else if (splitPiece.Length == 2)
+                {
+                    if (sign == '+')
+                    {
+                        result += RollSingleDie(splitPiece[0], splitPiece[1], dieResult, diceColors, diceForeground);
+                    }
+                    else
+                    {
+                        result -= RollSingleDie(splitPiece[0], splitPiece[1], dieResult, diceColors, diceForeground);
+                    }
+                }
+            }
+            Clients.All.rollDice(characterId, dieResult, result);
+        }
+
+        private int RollSingleDie(string numberInput, string typeInput, List<Die> dieResult, string[] dieColor, string textColor)
+        {
+            int result = 0;
+            if (Enum.TryParse(typeInput, out DiceType diceRolled))
+            {
+                bool parsed = int.TryParse(numberInput, out int diceNumber);
+                if(!parsed)
+                {
+                    diceNumber = 1;
+                }
+                for (int c = 0; c < diceNumber; c++)
+                {
+                    int currentRoll = randSeed.Next((int)diceRolled) + 1;
+                    dieResult.Add(new Die()
+                    {
+                        Colors = dieColor,
+                        DieType = diceRolled,
+                        TextColor = textColor,
+                        Value = currentRoll
+                    });
+                    result += currentRoll;
+                }
+            }
+            return result;
+        }
 
         public void AddCharacter(Character toAdd, int initiative)
         {

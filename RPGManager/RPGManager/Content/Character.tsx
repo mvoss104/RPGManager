@@ -67,6 +67,10 @@ class Character {
 
     Charisma: number;
 
+    DiceColors: string[];
+
+    DiceForeground: string;
+
     /**
      * Create a new blank character 
      */
@@ -128,5 +132,7 @@ class Character {
         this.Intelligence = fromServer.Intelligence;
         this.Wisdom = fromServer.Wisdom;
         this.Charisma = fromServer.Charisma;
+        this.DiceColors = fromServer.DiceColors;
+        this.DiceForeground = fromServer.DiceForeground;
     }
 }

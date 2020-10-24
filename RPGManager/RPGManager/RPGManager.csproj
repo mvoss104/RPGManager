@@ -140,7 +140,9 @@
     <Content Include="Content\Images\Portraits\NPC\Sara_Portrait.png" />
     <Content Include="Content\Images\Portraits\NPC\Senga_McIntyre.png" />
     <Content Include="Content\Images\Portraits\NPC\!blank.png" />
+    <Content Include="Content\Images\Portraits\PC\Aisling.png" />
     <Content Include="Content\Images\Portraits\PC\Aoife_Portrait.png" />
+    <Content Include="Content\Images\Portraits\PC\Burgess.png" />
     <Content Include="Content\Images\Portraits\PC\Caiside.png" />
     <Content Include="Content\Images\Portraits\PC\Emilia.png" />
     <Content Include="Content\Images\Portraits\PC\Fela_Portrait.png" />
@@ -153,6 +155,7 @@
     <Content Include="Content\Images\Portraits\PC\Qhirou.png" />
     <Content Include="Content\Images\Portraits\PC\Ruki_Portrait.png" />
     <Content Include="Content\Images\Portraits\PC\Saskia.png" />
+    <Content Include="Content\Images\Portraits\PC\Seirian.png" />
     <Content Include="Content\Images\Portraits\PC\Stahir_Portrait.png" />
     <Content Include="Content\Images\Portraits\PC\Zarton.png" />
     <Content Include="Content\Images\Portraits\Undead\banshee.png" />
@@ -176,7 +179,6 @@
     <Content Include="Content\Images\Portraits\Undead\will_o_wisp.png" />
     <Content Include="Content\Images\Portraits\Undead\wraith.png" />
     <Content Include="Content\Images\Portraits\Undead\Zombie.png" />
-    <Content Include="Content\Styles\bulma.css" />
     <Content Include="Content\Styles\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Docs\Rules.pdf" />
@@ -221,6 +223,10 @@
     <TypeScriptCompile Include="Content\BattlemapCell.tsx" />
     <TypeScriptCompile Include="Content\CharacterAdder.tsx" />
     <TypeScriptCompile Include="Content\Communication.ts" />
+    <TypeScriptCompile Include="Content\DiceResult.ts" />
+    <TypeScriptCompile Include="Content\Die.ts" />
+    <TypeScriptCompile Include="Content\DieDisplay.tsx" />
+    <TypeScriptCompile Include="Content\DieType.ts" />
     <TypeScriptCompile Include="Content\EffectListDisplay.tsx" />
     <TypeScriptCompile Include="Content\EffectDisplay.tsx" />
     <TypeScriptCompile Include="Content\CombatRow.tsx" />
@@ -232,6 +238,7 @@
     <TypeScriptCompile Include="Content\SingleDieDisplay.tsx" />
     <TypeScriptCompile Include="Content\SummaryView.tsx" />
     <TypeScriptCompile Include="Content\WrapperView.tsx" />
+    <TypeScriptCompile Include="Content\DiceResultDisplay.tsx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

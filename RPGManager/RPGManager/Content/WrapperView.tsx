@@ -13,14 +13,21 @@ declare var updateInitiative: Function;
 declare var addWall: Function;
 declare var addWallSkinny: Function;
 declare var removeWall: Function;
+declare var showRolledDice: Function;
+
+declare var wrapper: WrapperView;
 
 class WrapperView extends React.Component {
     public state: {
         isDM: boolean,
         activeRow: CombatRow,
         rows: CombatRow[],
-        walls: boolean[][]
+        walls: boolean[][],
+        dice: Die[],
+        diceResults: DiceResult[],
     }
+
+    public static sessionCharacter: Character;
 
     constructor(props: any) {
         super(props);
@@ -29,7 +36,9 @@ class WrapperView extends React.Component {
             isDM: window.location.hash === "#/DM",
             activeRow: null,
             rows: [],
-            walls: []
+            walls: [],
+            dice: [],
+            diceResults: []
         }
 
         window.onhashchange = function () {
@@ -46,8 +55,13 @@ class WrapperView extends React.Component {
         addWall = this.addWall.bind(this);
         addWallSkinny = this.addWallSkinny.bind(this);
         removeWall = this.removeWall.bind(this);
+        showRolledDice = this.showRolledDice.bind(this);
+
+        this.diceFieldKeyDown = this.diceFieldKeyDown.bind(this);
+        this.dismissResult = this.dismissResult.bind(this);
 
         Communication.StartSyncWithServer();
+        wrapper = this;
     }
 
     /**
@@ -56,6 +70,9 @@ class WrapperView extends React.Component {
      * @param initiative the initiative to add at
      */
     public addCharacterToDisplay(character: Character, initiative: number, x: number, y: number) {
+        if (WrapperView.sessionCharacter && character.Name === WrapperView.sessionCharacter.Name) {
+            WrapperView.sessionCharacter.Id = character.Id;
+        }
         let newRow = new CombatRow();
         newRow.Actor = character;
         newRow.InitiativeCount = initiative;
@@ -132,6 +149,27 @@ class WrapperView extends React.Component {
     }
 
     /**
+     * show dice that were rolled
+     * @param dice the dice rolled
+     */
+    public showRolledDice(characterId: number, dice: Die[], result: number) {
+        this.state.dice = this.state.dice.concat(dice);
+        let parsedResult = new DiceResult();
+        for (let row of this.state.rows) {
+            if (row.Actor.Id === characterId) {
+                parsedResult.characterName = row.Actor.Name;
+                break;
+            }
+        }
+        if (!parsedResult.characterName) {
+            parsedResult.characterName = "Someone ";
+        }
+        parsedResult.diceResult = result;
+        this.state.diceResults.push(parsedResult);
+        this.setState({ dice: this.state.dice, diceResults: this.state.diceResults });
+    }
+
+    /**
      * Add a wall to the map
      * @param x the x coordinate of the wall
      * @param y the y coordinate of the wall
@@ -141,6 +179,11 @@ class WrapperView extends React.Component {
         this.setState({ walls: this.state.walls });
     }
 
+    /**
+     * Update the array of walls without re-rendering the component
+     * @param x the x coordinate of the wall
+     * @param y the y coordinate of the wall
+     */
     public addWallSkinny(x: number, y: number) {
         if (!this.state.walls[x]) {
             this.state.walls[x] = [];
@@ -159,6 +202,10 @@ class WrapperView extends React.Component {
         }
         this.state.walls[x][y] = false;
         this.setState({ walls: this.state.walls });
+    }
+
+    public dismissResult() {
+        this.setState({ diceResults: [], dice: [] });
     }
 
     /**
@@ -200,6 +247,25 @@ class WrapperView extends React.Component {
     public static handleCharacter(characterString: string) {
         let addingCharacter = new Character(JSON.parse(characterString));
         let initiative = Math.floor((Math.random() * 20) + 1) + addingCharacter.Dexterity;
+        let highestCharCode = 0;
+        for (let row of wrapper.state.rows) {
+            if (row.Actor.Name.indexOf(addingCharacter.Name) == 0) {
+                var suffixCode = 0;
+                if (row.Actor.Name === addingCharacter.Name) {
+                    suffixCode = 65; // "A"
+                }
+                else {
+                    suffixCode = row.Actor.Name.charCodeAt(row.Actor.Name.length - 1);
+                }
+                if (suffixCode > highestCharCode) {
+                    highestCharCode = suffixCode;
+                }
+            }
+        }
+        if (highestCharCode > 0) {
+            addingCharacter.Name += " " + String.fromCharCode(highestCharCode + 1);
+        }
+        WrapperView.sessionCharacter = addingCharacter;
         Communication.AddCharacter(addingCharacter, initiative);
     }
 
@@ -207,12 +273,32 @@ class WrapperView extends React.Component {
         event.preventDefault();
     }
 
+    public static diceToDiceDisplay(value: Die, index: number, array: Die[]) {
+        return (<SingleDieDisplay key={index} die={value} />);
+    }
+
+    public diceFieldKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+        if (event.key === "Enter") {
+            Communication.RollDice(WrapperView.sessionCharacter ? WrapperView.sessionCharacter.Id : -1, event.currentTarget.value);
+            event.currentTarget.select();
+        }
+    }
+
     render() {
         return (
             <div onDrop={WrapperView.onDrop} onDragOver={WrapperView.onDragOver}>
+                <DiceResultDisplay diceResults={this.state.diceResults} dismiss={this.dismissResult} />
                 <SummaryView isDM={this.state.isDM} rows={this.state.rows} activeRow={this.state.activeRow} />
                 <Battlemap isDM={this.state.isDM} combatRows={this.state.rows} walls={this.state.walls} />
                 {this.state.isDM ? <CharacterAdder /> : null}
+                {this.state.dice.map(WrapperView.diceToDiceDisplay)}
+                <div className="bottom dice-field-container">
+                    {this.state.isDM ? <div>
+                        <button className="button" onClick={Communication.NextInitiative}>Next Turn</button>
+                        <button className="button" onClick={Communication.PrevInitiative}>Previous Turn</button>
+                    </div> : null}
+                    <input className="dice-field" onKeyPress={this.diceFieldKeyDown} />
+                </div>
             </div>
         );
     }

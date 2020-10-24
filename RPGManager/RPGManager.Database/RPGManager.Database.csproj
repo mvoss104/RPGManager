@@ -51,6 +51,8 @@
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CombatRow.cs" />
     <Compile Include="Models\CombatSave.cs" />
+    <Compile Include="Models\DiceType.cs" />
+    <Compile Include="Models\Die.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

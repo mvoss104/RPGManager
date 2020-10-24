@@ -63,6 +63,10 @@ namespace RPGManager.Models
 
         public int Charisma { get; set; }
 
+        public string[] DiceColors { get; set; }
+
+        public string DiceForeground { get; set; }
+
         public void ApplyDamage(int damageAmount)
         {
             if(ClassPowerHitPoints > damageAmount)

@@ -48,9 +48,19 @@ interface PlayersClient {
      * Remove a wall from the map.
      */
     removeWall: Function;
+
+    /**
+     * Show dice rolling with given results.
+     */
+    rollDice: Function;
 }
 
 interface PlayersServer {
+    /**
+     * roll dice and distribute the results to all clients
+     */
+    rollDice: Function;
+
     /**
      * Function pushes instructions to add characters to the UI.
      */
@@ -148,4 +158,8 @@ $.connection.playersHub.client.addWall = function (x: number, y: number) {
 
 $.connection.playersHub.client.removeWall = function (x: number, y: number) {
     removeWall(x, y);
+}
+
+$.connection.playersHub.client.rollDice = function (characterId: number, dieResult: Die[], result: number) {
+    showRolledDice(characterId, dieResult, result);
 }

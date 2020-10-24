@@ -69,6 +69,10 @@ class Communication {
         request.send();
     }
 
+    public static RollDice(characterId: number, dice: string) {
+        $.connection.playersHub.server.rollDice(characterId, dice);
+    }
+
     public static AddCharacter(character: Character, initiative: number) {
         $.connection.playersHub.server.addCharacter(character, initiative);
     }

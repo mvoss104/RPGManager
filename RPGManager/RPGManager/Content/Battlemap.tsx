@@ -24,9 +24,9 @@
 
     render() {
         let rows = [];
-        for (var y = 1; y <= 30; y++) {
+        for (var y = 1; y <= 40; y++) {
             let cells = [];
-            for (var x = 1; x <= 30; x++) {
+            for (var x = 1; x <= 37; x++) {
                 let row = this.getCombatRowInPosition(x, y);
                 cells.push(<BattlemapCell combatRow={row} x={x} y={y} isDM={this.props.isDM} isWall={this.props.walls[x] && this.props.walls[x][y]} />);
             }
