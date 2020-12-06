@@ -234,6 +234,7 @@
     <TypeScriptCompile Include="Content\CharacterRow.tsx" />
     <TypeScriptCompile Include="Content\Effect.tsx" />
     <TypeScriptCompile Include="Content\PortraitLifebar.tsx" />
+    <TypeScriptCompile Include="Content\SessionCharacter.tsx" />
     <TypeScriptCompile Include="Content\SignalR.ts" />
     <TypeScriptCompile Include="Content\SingleDieDisplay.tsx" />
     <TypeScriptCompile Include="Content\SummaryView.tsx" />

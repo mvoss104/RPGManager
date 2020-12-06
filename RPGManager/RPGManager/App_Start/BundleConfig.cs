@@ -13,6 +13,7 @@ namespace RPGManager.App_Start
 
             Bundle contentBundle = new ScriptBundle("~/Bundles/Content")
                 .Include("~/Content/Character.js")
+                .Include("~/Content/SessionCharacter.js")
                 .Include("~/Content/*.js");
 
             contentBundle.Orderer = new NonOrderingBundleOrderer();

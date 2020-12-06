@@ -107,6 +107,9 @@ class WrapperView extends React.Component {
         for (let row of this.state.rows) {
             if (row.Actor.Id === characterFromServer.Id) {
                 row.Actor.updateFromServer(characterFromServer);
+                if (characterFromServer.Id === (WrapperView.sessionCharacter && WrapperView.sessionCharacter.Id)) {
+                    WrapperView.sessionCharacter = row.Actor;
+                }
                 break;
             }
         }
@@ -279,7 +282,14 @@ class WrapperView extends React.Component {
 
     public diceFieldKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
-            Communication.RollDice(WrapperView.sessionCharacter ? WrapperView.sessionCharacter.Id : -1, event.currentTarget.value);
+            let characterId = -1;
+            if (this.state.isDM && this.state.activeRow) {
+                characterId = this.state.activeRow.Actor.Id;
+            }
+            else if (WrapperView.sessionCharacter) {
+                characterId = WrapperView.sessionCharacter.Id;
+            }
+            Communication.RollDice(characterId, event.currentTarget.value);
             event.currentTarget.select();
         }
     }
@@ -287,6 +297,7 @@ class WrapperView extends React.Component {
     render() {
         return (
             <div onDrop={WrapperView.onDrop} onDragOver={WrapperView.onDragOver}>
+                {WrapperView.sessionCharacter ? <SessionCharacter character={WrapperView.sessionCharacter} /> : null}
                 <DiceResultDisplay diceResults={this.state.diceResults} dismiss={this.dismissResult} />
                 <SummaryView isDM={this.state.isDM} rows={this.state.rows} activeRow={this.state.activeRow} />
                 <Battlemap isDM={this.state.isDM} combatRows={this.state.rows} walls={this.state.walls} />

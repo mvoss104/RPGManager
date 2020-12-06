@@ -52,7 +52,7 @@ class PortraitLifebar extends React.Component {
                 <svg width={this.props.size} height={this.props.size} viewBox="0 0 120 120">
                     <defs>
                         <pattern id={"portrait" + this.state.def_id} x="0" y="0" width="1" height="1">
-                            <image width="120" height="120" href={(location.pathname + "/" + this.props.portrait).replace("//","/")} />
+                            <image width="120" height="120" href={this.props.portrait.length > 2048 ? this.props.portrait : (location.pathname + "/" + this.props.portrait).replace("//","/")} />
                         </pattern>
                     </defs>
                     <circle cx="60" cy="60" r={radius - 1} fill={"url(#portrait"+this.state.def_id+")"} stroke="#e0e0e0" strokeWidth="12" />

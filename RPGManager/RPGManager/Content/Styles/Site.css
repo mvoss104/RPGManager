@@ -87,6 +87,14 @@ button {
     animation-duration: 1s;
 }
 
+.character-row.session {
+    position: sticky;
+    top: 0;
+    background-color: #111;
+    border-bottom: 1px solid #333;
+    padding-bottom: 3px;
+}
+
 .character-portrait-wrapper {
     display: inline-block;
     padding-right: 10px;
