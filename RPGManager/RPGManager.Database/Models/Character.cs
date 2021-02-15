@@ -63,6 +63,8 @@ namespace RPGManager.Models
 
         public int Charisma { get; set; }
 
+        public int Proficiency { get; set; }
+
         public string[] DiceColors { get; set; }
 
         public string DiceForeground { get; set; }

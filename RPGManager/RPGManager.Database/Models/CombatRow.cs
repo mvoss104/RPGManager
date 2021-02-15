@@ -44,7 +44,7 @@ namespace RPGManager.Models
             int ret = InitiativeCount.CompareTo(((CombatRow)other).InitiativeCount) * -1;
             if (ret == 0)
             {
-                ret = Actor.Dexterity.CompareTo(((CombatRow)other).Actor.Dexterity);
+                ret = Actor.Dexterity.CompareTo(((CombatRow)other).Actor.Dexterity) * -1;
             }
             if (ret == 0)
             {

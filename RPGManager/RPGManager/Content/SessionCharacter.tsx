@@ -1,4 +1,6 @@
 ﻿class SessionCharacter extends React.Component {
+    private static readonly __rollerSize = 40;
+
     props: {
         character: Character
     }
@@ -19,13 +21,39 @@
         };
 
         this.expandCollapse = this.expandCollapse.bind(this);
+        this.rollStat = this.rollStat.bind(this);
     }
 
     expandCollapse() {
         this.setState({ expanded: !this.state.expanded });
     }
 
+    rollStat(stat: string, profMult: number) {
+        let modifier = this.props.character[stat] + (this.props.character.Proficiency * profMult);
+        if (modifier >= 0) {
+            Communication.RollDice(this.props.character.Id, "1d20+" + modifier);
+        }
+        else {
+            Communication.RollDice(this.props.character.Id, "1d20" + modifier);
+        }
+    }
+
     render() {
+        const rollRegular = new Die();
+        rollRegular.DieType = DiceType.d20;
+        rollRegular.Colors = ["Grey"];
+        rollRegular.TextColor = "White";
+
+        const rollProf = new Die();
+        rollProf.DieType = DiceType.d20;
+        rollProf.Colors = ["Grey", "Gold"];
+        rollProf.TextColor = "White";
+
+        const rollExpert = new Die();
+        rollExpert.DieType = DiceType.d20;
+        rollExpert.Colors = ["Gold"];
+        rollExpert.TextColor = "White";
+
         return (
             <div key="summary-row" className="character-row session" style={{ height: this.state.portraitSize }} onClick={this.expandCollapse} ref="RowElement">
                 <div style={{ width: "calc(100% - " + (this.state.bodySize + this.state.portraitSize) + "px)" }}></div>
@@ -52,6 +80,103 @@
                         showDetails={true}
                     />
                 </div>
+                {this.state.expanded ?
+                    <div className="character-sheet">
+                        <div className="stat-block">
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">STR</div>
+                                    {this.props.character.Strength}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Strength", 0); }} title="Roll Strength">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Strength", 1); }} title="Roll Strength with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Strength", 2); }} title="Roll Strength with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">DEX</div>
+                                    {this.props.character.Dexterity}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Dexterity", 0); }} title="Roll Dexterity">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Dexterity", 1); }} title="Roll Dexterity with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Dexterity", 2); }} title="Roll Dexterity with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">CON</div>
+                                    {this.props.character.Constitution}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Constitution", 0); }} title="Roll Constitution">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Constitution", 1); }} title="Roll Constitution with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Constitution", 2); }} title="Roll Constitution with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">INT</div>
+                                    {this.props.character.Intelligence}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Intelligence", 0); }} title="Roll Intelligence">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Intelligence", 1); }} title="Roll Intelligence with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Intelligence", 2); }} title="Roll Intelligence with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">WIS</div>
+                                    {this.props.character.Wisdom}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Wisdom", 0); }} title="Roll Wisdom">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Wisdom", 1); }} title="Roll Wisdom with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Wisdom", 2); }} title="Roll Wisdom with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                            <div>
+                                <div className="stat-box">
+                                    <div className="stat-name">CHA</div>
+                                    {this.props.character.Charisma}
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Charisma", 0); }} title="Roll Charisma">
+                                    <DieDisplay die={rollRegular} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Charisma", 1); }} title="Roll Charisma with Proficiency">
+                                    <DieDisplay die={rollProf} size={SessionCharacter.__rollerSize} />
+                                </div>
+                                <div className="stat-roller" onClick={() => { this.rollStat("Charisma", 2); }} title="Roll Charisma with Expertise">
+                                    <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    : null
+                }
             </div>
        );
     }

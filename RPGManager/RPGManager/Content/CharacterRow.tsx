@@ -87,7 +87,12 @@ class CharacterRow extends React.Component {
     }
 
     expandCollapse() {
-        this.setState({ expanded: !this.state.expanded });
+        if (this.props.isDM) {
+            this.setState({ expanded: !this.state.expanded });
+        }
+        else if (!WrapperView.getSessionCharacter()) {
+            WrapperView.setSessionCharacter(this.props.character);
+        }
     }
 
     componentWillMount() {

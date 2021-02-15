@@ -67,6 +67,8 @@ class Character {
 
     Charisma: number;
 
+    Proficiency: number;
+
     DiceColors: string[];
 
     DiceForeground: string;
@@ -132,6 +134,7 @@ class Character {
         this.Intelligence = fromServer.Intelligence;
         this.Wisdom = fromServer.Wisdom;
         this.Charisma = fromServer.Charisma;
+        this.Proficiency = fromServer.Proficiency;
         this.DiceColors = fromServer.DiceColors;
         this.DiceForeground = fromServer.DiceForeground;
     }

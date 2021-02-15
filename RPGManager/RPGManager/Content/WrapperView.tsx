@@ -20,6 +20,7 @@ declare var wrapper: WrapperView;
 class WrapperView extends React.Component {
     public state: {
         isDM: boolean,
+        sessionCharacter: Character,
         activeRow: CombatRow,
         rows: CombatRow[],
         walls: boolean[][],
@@ -27,13 +28,15 @@ class WrapperView extends React.Component {
         diceResults: DiceResult[],
     }
 
-    public static sessionCharacter: Character;
+    public static setSessionCharacter: (character: Character) => void;
+    public static getSessionCharacter: () => Character;
 
     constructor(props: any) {
         super(props);
 
         this.state = {
             isDM: window.location.hash === "#/DM",
+            sessionCharacter: null,
             activeRow: null,
             rows: [],
             walls: [],
@@ -60,8 +63,19 @@ class WrapperView extends React.Component {
         this.diceFieldKeyDown = this.diceFieldKeyDown.bind(this);
         this.dismissResult = this.dismissResult.bind(this);
 
+        WrapperView.setSessionCharacter = this.setSessionCharacter.bind(this);
+        WrapperView.getSessionCharacter = this.getSessionCharacter.bind(this);
+
         Communication.StartSyncWithServer();
         wrapper = this;
+    }
+
+    public setSessionCharacter(character: Character) {
+        this.setState({ sessionCharacter: character })
+    }
+
+    public getSessionCharacter(): Character {
+        return this.state.sessionCharacter;
     }
 
     /**
@@ -70,8 +84,8 @@ class WrapperView extends React.Component {
      * @param initiative the initiative to add at
      */
     public addCharacterToDisplay(character: Character, initiative: number, x: number, y: number) {
-        if (WrapperView.sessionCharacter && character.Name === WrapperView.sessionCharacter.Name) {
-            WrapperView.sessionCharacter.Id = character.Id;
+        if (this.state.sessionCharacter && character.Name === this.state.sessionCharacter.Name) {
+            this.state.sessionCharacter.Id = character.Id;
         }
         let newRow = new CombatRow();
         newRow.Actor = character;
@@ -107,8 +121,8 @@ class WrapperView extends React.Component {
         for (let row of this.state.rows) {
             if (row.Actor.Id === characterFromServer.Id) {
                 row.Actor.updateFromServer(characterFromServer);
-                if (characterFromServer.Id === (WrapperView.sessionCharacter && WrapperView.sessionCharacter.Id)) {
-                    WrapperView.sessionCharacter = row.Actor;
+                if (characterFromServer.Id === (this.state.sessionCharacter && this.state.sessionCharacter.Id)) {
+                    WrapperView.setSessionCharacter(row.Actor);
                 }
                 break;
             }
@@ -268,7 +282,7 @@ class WrapperView extends React.Component {
         if (highestCharCode > 0) {
             addingCharacter.Name += " " + String.fromCharCode(highestCharCode + 1);
         }
-        WrapperView.sessionCharacter = addingCharacter;
+        WrapperView.setSessionCharacter(addingCharacter);
         Communication.AddCharacter(addingCharacter, initiative);
     }
 
@@ -286,8 +300,8 @@ class WrapperView extends React.Component {
             if (this.state.isDM && this.state.activeRow) {
                 characterId = this.state.activeRow.Actor.Id;
             }
-            else if (WrapperView.sessionCharacter) {
-                characterId = WrapperView.sessionCharacter.Id;
+            else if (this.state.sessionCharacter) {
+                characterId = this.state.sessionCharacter.Id;
             }
             Communication.RollDice(characterId, event.currentTarget.value);
             event.currentTarget.select();
@@ -297,7 +311,7 @@ class WrapperView extends React.Component {
     render() {
         return (
             <div onDrop={WrapperView.onDrop} onDragOver={WrapperView.onDragOver}>
-                {WrapperView.sessionCharacter ? <SessionCharacter character={WrapperView.sessionCharacter} /> : null}
+                {this.state.sessionCharacter ? <SessionCharacter character={this.state.sessionCharacter} /> : null}
                 <DiceResultDisplay diceResults={this.state.diceResults} dismiss={this.dismissResult} />
                 <SummaryView isDM={this.state.isDM} rows={this.state.rows} activeRow={this.state.activeRow} />
                 <Battlemap isDM={this.state.isDM} combatRows={this.state.rows} walls={this.state.walls} />
