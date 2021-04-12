@@ -205,12 +205,36 @@ button {
 
 .character-sheet {
     position: absolute;
-    width: 300px;
+    width: 400px;
     top: 100%;
     right: 0;
     background-color: #111;
     border: 1px #333 solid;
     border-radius: 3px;
+}
+
+.stat-block {
+    display: inline-block;
+    width: 200px;
+}
+
+.hp-block {
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+
+.hp-block input {
+    width: calc(100% - 10px);
+}
+
+.hp-text {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.hp-buttons {
+    text-align: center;
 }
 
 .stat-box {

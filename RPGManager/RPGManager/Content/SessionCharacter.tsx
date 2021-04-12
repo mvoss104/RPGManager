@@ -6,6 +6,7 @@
     }
 
     state: {
+        hpAdjust: number,
         expanded: boolean,
         portraitSize: number,
         bodySize: number
@@ -15,6 +16,7 @@
         super(props);
 
         this.state = {
+            hpAdjust: 0,
             expanded: false,
             portraitSize: 100,
             bodySize: 380
@@ -22,10 +24,22 @@
 
         this.expandCollapse = this.expandCollapse.bind(this);
         this.rollStat = this.rollStat.bind(this);
+        this.updateHpAdjust = this.updateHpAdjust.bind(this);
+        this.applyDamage = this.applyDamage.bind(this);
+        this.applyHealing = this.applyHealing.bind(this);
+        this.addTempHp = this.addTempHp.bind(this);
+        this.addClassHp = this.addClassHp.bind(this);
+        this.addEnhancedHp = this.addEnhancedHp.bind(this);
     }
 
     expandCollapse() {
         this.setState({ expanded: !this.state.expanded });
+    }
+
+    swallowEvent(event: React.MouseEvent<HTMLElement>) {
+        event.stopPropagation();
+        event.preventDefault();
+        return false;
     }
 
     rollStat(stat: string, profMult: number) {
@@ -36,6 +50,30 @@
         else {
             Communication.RollDice(this.props.character.Id, "1d20" + modifier);
         }
+    }
+
+    updateHpAdjust(event: React.ChangeEvent<HTMLInputElement>) {
+        this.setState({ hpAdjust: parseInt(event.target.value) });
+    }
+
+    applyDamage() {
+        Communication.DamageCharacter(this.props.character.Id, this.state.hpAdjust);
+    }
+
+    applyHealing() {
+        Communication.HealCharacter(this.props.character.Id, this.state.hpAdjust);
+    }
+
+    addTempHp() {
+        Communication.AddTempHp(this.props.character.Id, this.state.hpAdjust);
+    }
+
+    addClassHp() {
+        Communication.AddClassHp(this.props.character.Id, this.state.hpAdjust);
+    }
+
+    addEnhancedHp() {
+        Communication.AddEnhancedHp(this.props.character.Id, this.state.hpAdjust);
     }
 
     render() {
@@ -81,7 +119,7 @@
                     />
                 </div>
                 {this.state.expanded ?
-                    <div className="character-sheet">
+                    <div className="character-sheet" onClick={this.swallowEvent}>
                         <div className="stat-block">
                             <div>
                                 <div className="stat-box">
@@ -172,6 +210,22 @@
                                 <div className="stat-roller" onClick={() => { this.rollStat("Charisma", 2); }} title="Roll Charisma with Expertise">
                                     <DieDisplay die={rollExpert} size={SessionCharacter.__rollerSize} />
                                 </div>
+                            </div>
+                        </div>
+                        <div className="hp-block">
+                            <div className="hp-text">Hit Points</div>
+                            <div className="hp-text">{this.props.character.CurrentHitPoints + this.props.character.TemporaryHitPoints + this.props.character.EnhancedHitPoints + this.props.character.ClassPowerHitPoints}/{this.props.character.MaxHitPoints}</div>
+                            <div>
+                                <input className="input" onChange={this.updateHpAdjust} value={this.state.hpAdjust || ""} />
+                            </div>
+                            <div className="hp-buttons">
+                                <button className="button" onClick={this.applyDamage}>Damage</button>
+                                <button className="button" onClick={this.applyHealing}>Heal</button>
+                            </div>
+                            <div className="hp-buttons">
+                                <button className="button" onClick={this.addTempHp}>Temp HP</button>
+                                <button className="button" onClick={this.addEnhancedHp}> Enh HP</button>
+                                <button className="button" onClick={this.addClassHp}>Class HP</button>
                             </div>
                         </div>
                     </div>

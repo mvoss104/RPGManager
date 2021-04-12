@@ -99,6 +99,15 @@
                     </g>
                     <text x={this.props.die.Value >= 10 ? "88" : "115"} y="180" style={{ fill: this.props.die.TextColor, fontSize: "75px" }}>{this.props.die.Value}</text>
                 </svg>);
+            default:
+                return (<svg style={{
+                    height: this.props.size + "px",
+                    width: this.props.size + "px"
+                }} viewBox="0 0 500 500">
+                    {gradient}
+                    <circle style={{ fill: fillString }} cx="250" cy="250" r="200"></circle>
+                    <text x={this.props.die.Value >= 10 ? "165" : "210"} y="240" style={{ fill: this.props.die.TextColor, fontSize: "150px" }}>{this.props.die.Value}</text>
+                </svg>);
         }
     }
 }
